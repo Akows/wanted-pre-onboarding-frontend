@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { userLogin, userSignUp } from '../../api/apiClient';
+import { userLogin, userSignUp } from '../../api/apiUser';
 import { checkValidate } from '../../functions/userFunction';
 
 const Form = styled.form`
