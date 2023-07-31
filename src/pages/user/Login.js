@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { InputForm } from '../../components/user/InputForm';
 import { checkLogin } from '../../functions/userFunction';
@@ -27,6 +27,18 @@ const FormBorder = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    & > p {
+        font-size: 15px;
+        font-weight: bolder;
+        color: #D3BC8E;
+    };
+
+    & > p > a {
+        text-decoration: underline;
+        font-weight: 100;
+        color: #D3BC8E;
+    };
 `;
 
 export const Login = () => {
@@ -46,6 +58,8 @@ export const Login = () => {
             <FormBorder>
 
                 <InputForm componentType='로그인' />
+
+                <p>계정이 없으신가요? <Link to='/signup'>회원가입으로</Link> </p>
 
             </FormBorder>
         </BackGround>

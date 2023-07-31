@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { InputForm } from '../../components/user/InputForm';
-import { checkLogin } from '../../functions/userFunction';
 
 const BackGround = styled.div`
     width: 100%;
@@ -36,8 +35,14 @@ export const SignUp = () => {
 
     // 페이지 렌더링시에 로그인 여부를 확인.
     useEffect(() => {
-        checkLogin(navigate);
+        const isLogin = localStorage.getItem('token');
 
+        if (isLogin) {
+            navigate('/todo');
+        }
+        else {
+            navigate('/signup');
+        };
         // eslint-disable-next-line
     }, []);
 
