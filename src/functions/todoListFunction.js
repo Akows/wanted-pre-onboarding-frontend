@@ -1,4 +1,4 @@
-import { addTodo, getTodo } from "../api/apiTodolist";
+import { addTodo, getTodo, updateTodo } from "../api/apiTodolist";
 
 // todolist 추가하기.
 const addTodoList = async (inputdata) => {
@@ -30,4 +30,18 @@ const getTodoList = async () => {
     };
 };
 
-export { addTodoList, getTodoList };
+// todolist 수정하기.
+const updateTodoList = async (id, data) => {
+    try {
+        const response = await updateTodo(id, data);
+
+        if (response.status !== 200) {
+            throw new Error('에러: ' + response.statusText);
+        };
+    }
+    catch (error) {
+        alert(error);
+    };
+};
+
+export { addTodoList, getTodoList, updateTodoList };

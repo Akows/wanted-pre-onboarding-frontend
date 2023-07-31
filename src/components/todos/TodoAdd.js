@@ -4,7 +4,7 @@ import { addTodoList } from '../../functions/todoListFunction';
 
 const AddForm = styled.form`
     width: 90%;
-    height: 100%;
+    height: 50px;
 
     display: flex;
     flex-direction: row;
@@ -39,7 +39,7 @@ const AddForm = styled.form`
     };
 `
 
-export const TodoAdd = () => {
+export const TodoAdd = ({ getData }) => {
 
     const [inputData, setInputData] = useState('');
 
@@ -55,7 +55,10 @@ export const TodoAdd = () => {
             todo: inputData
         };
 
-        addTodoList(body);
+        addTodoList(body)
+            .then(() => {
+                getData();
+            });
         setInputData('');
     };
 
