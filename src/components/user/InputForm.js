@@ -103,7 +103,7 @@ export const InputForm = ({ componentType }) => {
                 };
 
                 // 정상 로그인 되었으면 서버에서 반환되는 access_token를 받아 localStorage에 저장.
-                localStorage.setItem('auth', response.data.access_token);
+                localStorage.setItem('token', response.data.access_token);
 
                 // 이후 todolist로 이동.
                 alert('환영합니다.');

@@ -18,7 +18,7 @@ const checkValidate = (inputdata, checktype) => {
 };
 
 const checkLogin = (navigate) => {
-    const isLogin = localStorage.getItem('auth');
+    const isLogin = localStorage.getItem('token');
 
     if (isLogin) {
         navigate('/todo');

@@ -3,7 +3,7 @@ import './App.css';
 
 import { Login } from './pages/user/Login';
 import { SignUp } from './pages/user/SignUp';
-import { ToDoList } from './pages/todos/ToDoList';
+import { Todos } from './pages/todos/Todos';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
 
       <Route path='/signin' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
-      <Route path='/todo' element={<ToDoList />} />
+      <Route path='/todo' element={<Todos />} />
 
     </Routes>
   );
