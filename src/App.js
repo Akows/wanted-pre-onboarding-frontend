@@ -1,24 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
-import { Login } from './pages/Login';
-import { SignUp } from './pages/SignUp';
-import { ToDoList } from './pages/ToDoList';
+import { Login } from './pages/user/Login';
+import { SignUp } from './pages/user/SignUp';
+import { ToDoList } from './pages/todos/ToDoList';
 
 function App() {
   return (
-    <div>
+    <Routes>
 
-      <Routes>
+      <Route path='/signin' element={<Login />} />
+      <Route path='/signup' element={<SignUp />} />
+      <Route path='/todolist' element={<ToDoList />} />
 
-        <Route path='/signin' element={<Login />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/todolist' element={<ToDoList />} />
-
-      </Routes>
-
-    </div>
+    </Routes>
   );
-}
+};
 
 export default App;
