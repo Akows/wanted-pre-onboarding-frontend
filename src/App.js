@@ -11,12 +11,11 @@ function App() {
 
       <Routes>
 
-        <Route path='/' element={<Login />} />
+        <Route path='/signin' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/todolist' element={<ToDoList />} />
 
       </Routes>
-
 
     </div>
   );
