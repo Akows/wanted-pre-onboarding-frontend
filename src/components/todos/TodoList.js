@@ -45,7 +45,20 @@ export const TodoList = () => {
     const [listData, setListData] = useState([]);
 
     useEffect(() => {
-        // getTodoList();
+
+        const getData = async () => {
+            try {
+                const response = await getTodoList();
+                setListData(response);
+            }
+            catch (error) {
+                alert(error);
+            };
+        };
+
+        getData();
+
+        // setListData(response);
     }, [])
 
     return (
@@ -55,11 +68,7 @@ export const TodoList = () => {
 
             <TodoAdd />
 
-            {listData.length === 0 && <p>리스트 데이터가 존재하지않습니다.</p>}
-
-            {listData.map((item) => (
-                <TodoItem item={item} />
-            ))}
+            <TodoItem listData={listData} setListData={setListData} />
 
         </TodoListForm>
     );

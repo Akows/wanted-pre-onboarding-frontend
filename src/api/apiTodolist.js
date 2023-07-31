@@ -15,8 +15,8 @@ const addTodo = async (payload) => {
 };
 
 // todo 조회.
-const getTodo = async (payload) => {
-    return await axios.get(`${process.env.REACT_APP_API_URL}todos`, payload, header);
+const getTodo = async () => {
+    return await axios.get(`${process.env.REACT_APP_API_URL}todos`, header);
 };
 
 // todo 수정.
