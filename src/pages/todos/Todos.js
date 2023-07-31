@@ -8,11 +8,28 @@ const BackGrounds = styled.div`
     width: 100%;
     height: 100%;
 
+    background-color: rgba( 65, 71, 89, 1 );
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    & > button {
+        width: 200px;
+        height: 50px;
+
+        margin-top: 50px;
+
+        border: none;
+        border-radius: 10px;
+
+        font-size: 18px;
+        font-weight: 800;
+        color: black;
+    };
 `
+
 export const Todos = () => {
 
     // 페이지 이동용 useNavigate.
@@ -44,9 +61,10 @@ export const Todos = () => {
     return (
         <BackGrounds>
 
-            <button onClick={logout}>로그아웃</button>
+            <button onClick={logout}>로그아웃하기</button>
 
             <TodoList />
+
         </BackGrounds>
     );
 };

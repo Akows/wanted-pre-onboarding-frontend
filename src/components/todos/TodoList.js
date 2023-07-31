@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
+import { getTodoList } from '../../functions/todoListFunction';
+import { TodoAdd } from './TodoAdd';
+import { TodoItem } from './TodoItem';
 
 const TodoListForm = styled.div`
     width: 500px;
-    height: 100%;
+    height: 500px;
 
-    margin-top: 150px;
+    margin-top: 80px;
+    margin-bottom: 120px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     border: 1px solid gray;
 
@@ -24,28 +28,24 @@ const TodoListForm = styled.div`
 
         text-align: center;
     };
-
-    & > input {
-        width: 80%;
-        height: 30px;
-
-        border: 1px solid gray;
-        border-radius: 15px;
-
-        margin-bottom: 15px;
+    & > p:nth-child(3) {
+        width: 100%;
+        height: 45px;
 
         font-size: 18px;
-    };
-    // placeholder 부분만 중앙 정렬.
-    & > input::placeholder {
+        font-weight: 800;
+        color: #D3BC8E;
+
         text-align: center;
     };
 `
 
 export const TodoList = () => {
 
-    useEffect(() => {
+    const [listData, setListData] = useState([]);
 
+    useEffect(() => {
+        // getTodoList();
     }, [])
 
     return (
@@ -53,21 +53,13 @@ export const TodoList = () => {
 
             <p>TodoList</p>
 
-            <input data-testid="new-todo-input" />
-            <button data-testid="new-todo-add-button">추가</button>
+            <TodoAdd />
 
-            <li>
-                <label>
-                    <input type="checkbox" />
-                    <span>TODO 1</span>
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="checkbox" />
-                    <span>TODO 2</span>
-                </label>
-            </li>
+            {listData.length === 0 && <p>리스트 데이터가 존재하지않습니다.</p>}
+
+            {listData.map((item) => (
+                <TodoItem item={item} />
+            ))}
 
         </TodoListForm>
     );
