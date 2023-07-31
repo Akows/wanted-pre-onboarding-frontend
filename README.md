@@ -6,6 +6,17 @@
 ## 프로젝트 실행 방법
 배포 링크를 통하여 프로젝트 실행 및 시연.
 
+혹은 git 파일을 다운로드하여 압축해제 이후 적절한 툴로 파일을 연 다음 
+프로젝트 root의 .env 파일을 생성하고 다음과 같은 내용을 저장.
+
+> REACT_APP_API_URL = 'https://www.pre-onboarding-selection-task.shop/'
+
+이후 프로젝트 패키지를 설치하고 실행.
+
+> npm i
+
+> npm run start
+
 ## 배포 링크
 배포 중..
 
