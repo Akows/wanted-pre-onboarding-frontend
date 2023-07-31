@@ -10,7 +10,7 @@ const header = {
 };
 
 // todo 작성.
-const writeTodo = async (payload) => {
+const addTodo = async (payload) => {
     return await axios.post(`${process.env.REACT_APP_API_URL}todos`, payload, header);
 };
 
@@ -29,4 +29,4 @@ const deleteTodo = async (id, payload) => {
     return await axios.delete(`${process.env.REACT_APP_API_URL}todos/${id}`, payload, header);
 };
 
-export { writeTodo, getTodo, updateTodo, deleteTodo };
+export { addTodo, getTodo, updateTodo, deleteTodo };
