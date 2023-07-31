@@ -102,11 +102,24 @@ export const InputForm = ({ componentType }) => {
 
             <input data-testid="password-input" placeholder='비밀번호를 입력해주세요' type='password' onChange={onChangeInputData} id='password' />
 
-            {isEmailValidate && isPasswordValidate ?
-                <button data-testid="signup-button" type='submit'>{componentType}</button>
-                :
-                <button data-testid="signup-button" disabled>{componentType}</button>
-            }
+            {componentType === '회원가입' &&
+                <>
+                    {isEmailValidate && isPasswordValidate ?
+                        <button data-testid="signup-button" type='submit'>{componentType}</button>
+                        :
+                        <button data-testid="signup-button" disabled>{componentType}</button>
+                    }
+                </>}
+
+            {componentType === '로그인' &&
+                <>
+                    {isEmailValidate && isPasswordValidate ?
+                        <button data-testid="signin-button" type='submit'>{componentType}</button>
+                        :
+                        <button data-testid="signin-button" disabled>{componentType}</button>
+                    }
+                </>}
+
 
         </Form>
     );
