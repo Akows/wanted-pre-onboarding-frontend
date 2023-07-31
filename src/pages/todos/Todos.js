@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { TodoList } from '../../components/todos/TodoList';
@@ -38,12 +38,14 @@ export const Todos = () => {
     // 페이지 경로 확인용 useLocation.
     const location = useLocation();
 
+    const [isLoading, setIsLoading] = useState(true);
+
     const logout = () => {
         const choice = window.confirm('정말 로그아웃 하시겠어요?');
 
         if (choice) {
             localStorage.removeItem('token');
-            navigate('signin');
+            navigate('/signin');
             return;
         }
         else {
@@ -55,6 +57,15 @@ export const Todos = () => {
     useEffect(() => {
         checkLogin(navigate, location);
 
+        const isLogin = localStorage.getItem('token');
+
+        if (isLogin) {
+            setIsLoading(false);
+        }
+        else {
+            setIsLoading(true);
+        };
+
         // eslint-disable-next-line
     }, []);
 
@@ -63,7 +74,11 @@ export const Todos = () => {
 
             <button onClick={logout}>로그아웃하기</button>
 
-            <TodoList />
+            {isLoading ?
+                'loading...'
+                :
+                <TodoList />
+            }
 
         </BackGrounds>
     );

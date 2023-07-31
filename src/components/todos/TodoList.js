@@ -47,7 +47,12 @@ export const TodoList = () => {
     const getData = async () => {
         try {
             const response = await getTodoList();
-            setListData(response);
+
+            // response가 확실하게 존재하는지 검증한 뒤에 setState.
+            if (response) {
+                setListData(response);
+            };
+
         }
         catch (error) {
             alert(error);
