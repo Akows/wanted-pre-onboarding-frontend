@@ -25,8 +25,8 @@ const updateTodo = async (id, payload) => {
 };
 
 // todo 삭제.
-const deleteTodo = async (id, payload) => {
-    return await axios.delete(`${process.env.REACT_APP_API_URL}todos/${id}`, payload, header);
+const deleteTodo = async (id) => {
+    return await axios.delete(`${process.env.REACT_APP_API_URL}todos/${id}`, header);
 };
 
 export { addTodo, getTodo, updateTodo, deleteTodo };
