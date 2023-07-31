@@ -6,12 +6,13 @@ import { SignUp } from './pages/user/SignUp';
 import { ToDoList } from './pages/todos/ToDoList';
 
 function App() {
+
   return (
     <Routes>
 
       <Route path='/signin' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
-      <Route path='/todolist' element={<ToDoList />} />
+      <Route path='/todo' element={<ToDoList />} />
 
     </Routes>
   );

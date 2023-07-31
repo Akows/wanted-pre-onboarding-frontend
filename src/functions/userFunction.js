@@ -1,3 +1,4 @@
+
 // 유효성 검사.
 const checkValidate = (inputdata, checktype) => {
 
@@ -16,4 +17,15 @@ const checkValidate = (inputdata, checktype) => {
     };
 };
 
-export { checkValidate };
+const checkLogin = (navigate) => {
+    const isLogin = localStorage.getItem('auth');
+
+    if (isLogin) {
+        navigate('/todo');
+    }
+    else {
+        navigate('/signin');
+    };
+};
+
+export { checkValidate, checkLogin };
