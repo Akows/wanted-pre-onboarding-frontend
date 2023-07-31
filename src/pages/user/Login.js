@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { InputForm } from '../../components/user/InputForm';
 import { checkLogin } from '../../functions/userFunction';
@@ -46,9 +46,12 @@ export const Login = () => {
     // 페이지 이동용 useNavigate.
     const navigate = useNavigate();
 
+    // 페이지 경로 확인용 useLocation.
+    const location = useLocation();
+
     // 페이지 렌더링시에 로그인 여부를 확인.
     useEffect(() => {
-        checkLogin(navigate);
+        checkLogin(navigate, location);
 
         // eslint-disable-next-line
     }, []);
@@ -59,7 +62,7 @@ export const Login = () => {
 
                 <InputForm componentType='로그인' />
 
-                <p>계정이 없으신가요? <Link to='/signup'>회원가입으로</Link> </p>
+                <p>계정이 없으신가요? <Link to='/signup'>회원가입으로..</Link> </p>
 
             </FormBorder>
         </BackGround>

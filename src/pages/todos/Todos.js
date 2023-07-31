@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { TodoList } from '../../components/todos/TodoList';
 import { checkLogin } from '../../functions/userFunction';
@@ -18,11 +18,15 @@ export const Todos = () => {
     // 페이지 이동용 useNavigate.
     const navigate = useNavigate();
 
+    // 페이지 경로 확인용 useLocation.
+    const location = useLocation();
+
     const logout = () => {
         const choice = window.confirm('정말 로그아웃 하시겠어요?');
 
         if (choice) {
             localStorage.removeItem('token');
+            navigate('signin');
             return;
         }
         else {
@@ -32,7 +36,7 @@ export const Todos = () => {
 
     // 페이지 렌더링시에 로그인 여부를 확인.
     useEffect(() => {
-        checkLogin(navigate);
+        checkLogin(navigate, location);
 
         // eslint-disable-next-line
     }, []);

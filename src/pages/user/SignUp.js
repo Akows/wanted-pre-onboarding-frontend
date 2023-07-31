@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { InputForm } from '../../components/user/InputForm';
+import { checkLogin } from '../../functions/userFunction';
 
 const BackGround = styled.div`
     width: 100%;
@@ -26,6 +27,18 @@ const FormBorder = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
+    & > p {
+        font-size: 15px;
+        font-weight: bolder;
+        color: #D3BC8E;
+    };
+
+    & > p > a {
+        text-decoration: underline;
+        font-weight: 100;
+        color: #D3BC8E;
+    };
 `;
 
 export const SignUp = () => {
@@ -33,16 +46,13 @@ export const SignUp = () => {
     // 페이지 이동용 useNavigate.
     const navigate = useNavigate();
 
+    // 페이지 경로 확인용 useLocation.
+    const location = useLocation();
+
     // 페이지 렌더링시에 로그인 여부를 확인.
     useEffect(() => {
-        const isLogin = localStorage.getItem('token');
+        checkLogin(navigate, location);
 
-        if (isLogin) {
-            navigate('/todo');
-        }
-        else {
-            navigate('/signup');
-        };
         // eslint-disable-next-line
     }, []);
 
@@ -51,6 +61,8 @@ export const SignUp = () => {
             <FormBorder>
 
                 <InputForm componentType='회원가입' />
+
+                <p>계정이 있으신가요? <Link to='/signin'>로그인으로..</Link> </p>
 
             </FormBorder>
         </BackGround>

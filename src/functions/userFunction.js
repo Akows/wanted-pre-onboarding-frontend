@@ -19,14 +19,22 @@ const checkValidate = (inputdata, checktype) => {
 };
 
 // 로그인 체크.
-const checkLogin = (navigate) => {
+const checkLogin = (navigate, location) => {
+
+    const pathname = location.pathname;
     const isLogin = localStorage.getItem('token');
 
     if (isLogin) {
         navigate('/todo');
     }
     else {
-        navigate('/signin');
+
+        if (pathname === '/signup') {
+            navigate('/signup');
+        }
+        else {
+            navigate('/signin');
+        };
     };
 };
 
