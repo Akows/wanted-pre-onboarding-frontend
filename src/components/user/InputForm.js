@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-
+import { checkValidate } from '../../functions/userFunction';
 
 const Form = styled.form`
     width: 95%;
@@ -54,27 +54,48 @@ const Form = styled.form`
 
 export const InputForm = ({ componentType }) => {
 
+    // 입력 데이터 State.
     const [inputData, setInputData] = useState({
         email: '',
         password: '',
     });
 
+    // 각 데이터의 유효성 체크 플래그 변수.
     const [isEmailValidate, setIsEmailValidate] = useState(false);
     const [isPasswordValidate, setIsPasswordValidate] = useState(false);
 
+    // input 태그의 데이터 입력 이벤트.
+    const onChangeInputData = (event) => {
+        setInputData({ ...inputData, [event.target.id]: event.target.value });
+    };
+
+    // 입력한 데이터를 submit.
+    const onSubmit = (event) => {
+        event.preventDefault();
+        console.log(inputData);
+    };
+
+    // 유효성 검사.
+    useEffect(() => {
+        const isEmailValid = checkValidate(inputData.email, 'email');
+        const isPasswordValid = checkValidate(inputData.password, 'password');
+        setIsEmailValidate(isEmailValid);
+        setIsPasswordValidate(isPasswordValid);
+    }, [inputData.email, inputData.password]);
+
     return (
-        <Form>
+        <Form onSubmit={onSubmit}>
 
             <p>{componentType}</p>
 
-            <input data-testid="email-input" placeholder='이메일 주소를 입력해주세요' type='text' />
+            <input data-testid="email-input" placeholder='이메일 주소를 입력해주세요' type='text' onChange={onChangeInputData} id='email' />
 
-            <input data-testid="password-input" placeholder='비밀번호를 입력해주세요' />
+            <input data-testid="password-input" placeholder='비밀번호를 입력해주세요' type='password' onChange={onChangeInputData} id='password' />
 
             {isEmailValidate && isPasswordValidate ?
-                <button data-testid="signup-button">{componentType}</button>
+                <button data-testid="signup-button" type='submit'>{componentType}</button>
                 :
-                <button data-testid="signup-button">{componentType}</button>
+                <button data-testid="signup-button" disabled>{componentType}</button>
             }
 
         </Form>
