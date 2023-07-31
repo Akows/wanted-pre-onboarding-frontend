@@ -4,7 +4,8 @@ const token = localStorage.getItem('token');
 
 const header = {
     headers: {
-        Authorization: `Bearer ${token}`,
+        // eslint-disable-next-line
+        Authorization: 'Bearer ' + `${token}`,
         'Content-Type': 'application/json',
     },
 };
