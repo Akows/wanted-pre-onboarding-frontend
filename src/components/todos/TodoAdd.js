@@ -59,12 +59,13 @@ export const TodoAdd = ({ getData }) => {
             .then(() => {
                 getData();
             });
+
         setInputData('');
     };
 
     return (
         <AddForm onSubmit={onSubmit}>
-            <input data-testid="new-todo-input" placeholder='새롭게 추가할 내용을 입력해주세요.' onChange={onChange} />
+            <input data-testid="new-todo-input" placeholder='새롭게 추가할 내용을 입력해주세요.' onChange={onChange} value={inputData} />
             <button data-testid="new-todo-add-button">추가</button>
         </AddForm>
     );

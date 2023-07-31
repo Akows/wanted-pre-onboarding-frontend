@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import { updateTodoList } from '../../functions/todoListFunction';
+import { deleteTodoList, updateTodoList } from '../../functions/todoListFunction';
 
 const Todo = styled.div`
     width: 100%;
@@ -79,12 +79,34 @@ export const TodoItem = ({ item, getData }) => {
 
     // 수정.
     const onUpdate = () => {
-        console.log(inputData);
+        // 완료체크 기능이 따로 존재함에도 수정 기능의 body에서 isCompleted를 다시 사용하는 이유.
+        // isCompleted should not be empty. 서버에서 수정기능 사용시 isCompleted 요소가 반드시 존재해야하기 때문.
+        const body = {
+            todo: inputData,
+            isCompleted: item.isCompleted
+        };
+
+        updateTodoList(item.id, body)
+            .then(() => {
+                getData();
+                setIsEdit(false);
+            });
     };
 
     // 삭제.
     const onDelete = () => {
-        console.log(inputData);
+        const choice = window.confirm('정말 삭제 하시겠어요?');
+
+        if (choice) {
+            deleteTodoList(item.id)
+                .then(() => {
+                    getData();
+                });
+            return;
+        }
+        else {
+            return;
+        };
     };
 
     // 수정 취소.

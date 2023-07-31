@@ -44,8 +44,6 @@ export const TodoList = () => {
 
     const [listData, setListData] = useState([]);
 
-    const [isRecall, setIsRecall] = useState(false);
-
     const getData = async () => {
         try {
             const response = await getTodoList();
