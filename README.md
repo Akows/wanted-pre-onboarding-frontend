@@ -17,8 +17,8 @@
 
 > npm run start
 
-## 배포 링크
-배포 중..
+## 배포 링크 (vercel)
+[배포 링크](https://wanted-pre-onboarding-frontend-lyart-seven.vercel.app)
 
 ## 품질 체크 리스트
 
