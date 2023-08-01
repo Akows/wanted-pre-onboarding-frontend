@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import { Login } from './pages/user/Login';
@@ -9,6 +9,9 @@ function App() {
 
   return (
     <Routes>
+
+      {/* 기본 경로인 '/'을 '/signin'으로 리다이렉트합니다. */}
+      <Route path='/' element={<Navigate to='/signin' />} />
 
       <Route path='/signin' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
