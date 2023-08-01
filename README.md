@@ -18,7 +18,7 @@
 > npm run start
 
 ## 배포 링크 (vercel)
-[배포 링크](lystodoappako.vercel.app)
+[배포 링크](https://lystodoappako.vercel.app/)
 
 ## 품질 체크 리스트
 
